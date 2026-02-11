@@ -3,76 +3,110 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Velo</title>
-  <meta name="description" content="Velo is outbound infrastructure for teams that execute—turning signal into pipeline automatically." />
+  <title>Velo | Dark Theme FTL Outreach</title>
+  <meta name="description" content="Velo helps FTL freight teams import contacts, send mass email with throttle controls, track KPIs, and schedule follow-ups." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/style.css" />
 </head>
 
 <body>
-  <div class="bg">
-    <div class="glow g1"></div>
-    <div class="glow g2"></div>
-    <div class="grid"></div>
+  <div class="ambient" aria-hidden="true">
+    <div class="blob blob-one"></div>
+    <div class="blob blob-two"></div>
+    <div class="lines"></div>
   </div>
 
-  <header class="nav">
-    <div class="brand">
-      <img class="logo" src="/logo.png" alt="Velo logo" />
-      <span class="brand-name">Velo</span>
-    </div>
+  <div class="site-shell">
+    <header class="nav fade-up" style="--delay: 90ms;">
+      <a class="brand" href="#">
+        <img class="logo" src="/logo.png" alt="Velo logo" />
+        <span>Velo</span>
+      </a>
+      <a class="nav-link" href="mailto:hello@velo-app.net">Start a pilot</a>
+    </header>
 
-    <a class="nav-link" href="mailto:hello@velo-app.net">Contact</a>
-  </header>
+    <main>
+      <section class="hero">
+        <p class="eyebrow fade-up" style="--delay: 140ms;">Outbound infrastructure for freight teams</p>
+        <h1 class="fade-up" style="--delay: 190ms;">Run outbound freight outreach with control.</h1>
+        <p class="lead fade-up" style="--delay: 240ms;">
+          Import contacts, launch mass email with throttle limits, monitor KPI performance,
+          and keep every prospect moving with scheduled follow-ups.
+        </p>
 
-  <main class="wrap">
-    <section class="hero">
-      <h1>Execution speed is now a competitive advantage.</h1>
-      <p>
-        Velo gives modern operators the infrastructure to capture demand, automate outreach,
-        and convert opportunity — without slowing down.
-      </p>
+        <div class="cta-row fade-up" style="--delay: 290ms;">
+          <a class="button primary" href="mailto:hello@velo-app.net?subject=Velo%20Demo%20Request&body=Team%20Velo%2C%0A%0AWe%27d%20like%20a%20demo.%0A%0AName%3A%0ACompany%3A%0ALanes%3A%0ACurrent%20stack%3A%0A">
+            Get early access
+          </a>
+          <a class="button ghost" href="#workflow">View workflow</a>
+        </div>
 
-      <div class="cta-row">
-        <a class="cta primary" href="mailto:hello@velo-app.net?subject=Velo%20Early%20Access&body=Hey%20Velo%20team%2C%0A%0AI%20want%20early%20access.%0A%0AName%3A%0ACompany%3A%0AUse%20case%3A%0A">
-          Get early access
-        </a>
-        <a class="cta secondary" href="#features">See how it works</a>
-      </div>
+        <div class="trust fade-up" style="--delay: 340ms;">
+          <span class="signal"></span>
+          Open-rate tracking is in active development
+        </div>
+      </section>
 
-      <div class="micro">
-        <span class="dot"></span>
-        Built for speed • Designed for execution
-      </div>
-    </section>
+      <section id="workflow" class="grid reveal">
+        <article class="panel">
+          <h2>Import contact lists</h2>
+          <p>Bring in prospect data quickly so reps can start outreach without manual list building.</p>
+        </article>
+        <article class="panel">
+          <h2>Mass email with throttles</h2>
+          <p>Control send velocity and cadence so campaigns scale safely and consistently.</p>
+        </article>
+        <article class="panel">
+          <h2>KPIs and follow-ups</h2>
+          <p>Track core outbound metrics and schedule the next touch automatically for every account.</p>
+        </article>
+      </section>
 
-    <section id="features" class="features">
-      <div class="card">
-        <h3>Signal → Action</h3>
-        <p>Prioritize real intent. Trigger follow-ups automatically. Move faster than your pipeline.</p>
-      </div>
+      <section class="split reveal">
+        <div class="metric-card">
+          <img class="metric-logo" src="/logo.png" alt="Velo mark" />
+          <p class="metric-kicker">Execution control</p>
+          <p class="metric-title">One place to import, email, track KPI performance, and follow up.</p>
+          <div class="metric-row">
+            <div><strong>Campaign throttling</strong><span>Manage volume with send-rate controls</span></div>
+            <div><strong>Open rate next</strong><span>Engagement visibility currently being built</span></div>
+          </div>
+        </div>
+        <div class="timeline">
+          <h2>How teams use Velo</h2>
+          <ol>
+            <li><strong>Import contacts</strong> from existing prospect sources.</li>
+            <li><strong>Launch campaigns</strong> with throttle controls and messaging cadence.</li>
+            <li><strong>Track KPIs and follow up</strong> so opportunities do not stall.</li>
+          </ol>
+        </div>
+      </section>
+    </main>
 
-      <div class="card">
-        <h3>Operator-first</h3>
-        <p>Minimal friction. Clean workflows. Built for people who actually run outreach every day.</p>
-      </div>
-
-      <div class="card">
-        <h3>Built to scale</h3>
-        <p>Start simple. Add tracking, scoring, and automation as your volume grows.</p>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <div class="footer-left">© <span id="year"></span> Velo</div>
-      <div class="footer-right">
-        <a href="mailto:hello@velo-app.net">hello@velo-app.net</a>
-      </div>
+    <footer class="footer reveal">
+      <p>&copy; <span id="year"></span> Velo</p>
+      <a href="mailto:hello@velo-app.net">hello@velo-app.net</a>
     </footer>
-  </main>
+  </div>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
   </script>
 </body>
 </html>
-
