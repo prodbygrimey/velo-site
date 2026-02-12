@@ -1,5 +1,5 @@
 // POST /api/pixel-token
-// Body: { message_id, campaign_id, recipient_id, ttl_seconds? }
+// Body: { message_id, campaign_id, recipient_id, recipient_email, ttl_seconds? }
 // Returns: { url, token, payload }
 
 function base64UrlEncode(bytes) {
@@ -70,13 +70,18 @@ export async function onRequest({ request, env }) {
   const message_id = String(body.message_id || "").trim();
   const campaign_id = String(body.campaign_id || "").trim();
   const recipient_id = String(body.recipient_id || "").trim();
+  const recipient_email = String(body.recipient_email || body.recipients_email || "").trim().toLowerCase();
 
-  if (!message_id || !campaign_id || !recipient_id) {
+  if (!message_id || !campaign_id || !recipient_id || !recipient_email) {
     return jsonResponse(
-      { error: "missing_fields", required: ["message_id", "campaign_id", "recipient_id"] },
+      { error: "missing_fields", required: ["message_id", "campaign_id", "recipient_id", "recipient_email"] },
       400,
       corsHeaders
     );
+  }
+
+  if (!isLikelyEmail(recipient_email)) {
+    return jsonResponse({ error: "invalid_recipient_email" }, 400, corsHeaders);
   }
 
   // TTL
@@ -84,12 +89,13 @@ export async function onRequest({ request, env }) {
   const ttlSeconds = Number.isFinite(body.ttl_seconds) ? Math.max(60, Math.floor(body.ttl_seconds)) : 45 * 24 * 3600;
 
   // Build payload compatible with your existing pixel code/script:
-  // m=message_id, c=campaign_id, r=recipient_id, tid=token_id, iat/exp
+  // m=message_id, c=campaign_id, r=recipient_id, re=recipient_email, tid=token_id, iat/exp
   const token_id = crypto.randomUUID();
   const payloadObj = {
     m: message_id,
     c: campaign_id,
     r: recipient_id,
+    re: recipient_email,
     tid: token_id,
     iat: now,
     exp: now + ttlSeconds,
@@ -117,4 +123,9 @@ export async function onRequest({ request, env }) {
     200,
     corsHeaders
   );
+}
+
+function isLikelyEmail(value) {
+  // Simple guardrail; full RFC validation is intentionally out of scope.
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 }

@@ -57,3 +57,23 @@ Impact/Risks:
 - Messaging now reflects current product scope more accurately
 Next steps:
 - Update copy again when open-rate tracking ships
+
+Date: 2026-02-11
+Change: Added hosted email open tracking pixel infrastructure
+Why: Support open-rate tracking from outbound emails with a public endpoint instead of local-only app state
+What changed:
+- Added Cloudflare Pages Function endpoint at /p/o.gif returning 1x1 GIF and logging open events
+- Added D1 schema for raw events and per-message rollups
+- Added signed token generator script for per-message pixel URLs
+- Added setup guide for Cloudflare bindings, secrets, and embed usage
+Files:
+- functions/p/o.gif.js
+- db/email_tracking.sql
+- scripts/create-pixel-token.mjs
+- TRACKING_PIXEL_SETUP.md
+- package.json
+Impact/Risks:
+- Requires D1 binding (DB) and PIXEL_SECRET configuration in Cloudflare Pages
+- Open metrics remain directional due to mailbox proxy/preload behavior
+Next steps:
+- Wire token generation into the local app email send pipeline
